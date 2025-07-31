@@ -2,7 +2,7 @@ name: CI - Build & Test
 
 on:
   push:
-    branches: [ "**" ]
+    branches: [ "main" ]
 
 jobs:
   build-and-test:
@@ -17,5 +17,5 @@ jobs:
 
       - name: Build & run tests via docker-compose
         run: |
-          docker compose pull || true
-          docker compose up --build --abort-on-container-exit --exit-code-from app
+          docker compose -f compose.yaml pull || true
+          docker compose -f compose.yaml up --build
