@@ -17,5 +17,5 @@ jobs:
 
       - name: Build & run tests via docker-compose
         run: |
-          docker compose -f compose.yaml pull || true
-          docker compose -f compose.yaml up --build
+          docker compose -f Docker Project/compose.yaml pull || true
+          docker compose -f Docker Project/compose.yaml up --build
