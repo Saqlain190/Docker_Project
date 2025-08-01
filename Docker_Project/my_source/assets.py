@@ -19,9 +19,9 @@ def load_postgres_data() -> None:
         dataset_name="Docker_Project"
     )
 
-
+    print("Running Pipeline ")
     load_info = pipeline.run(source, write_disposition="replace")
-    print("DLT load info:", load_info)  # noqa: T201
+    print("DLT load info:", load_info)  
 
 
 if __name__ == "__main__":
