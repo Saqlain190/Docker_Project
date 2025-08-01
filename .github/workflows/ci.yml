@@ -23,9 +23,10 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v4
+
         with:
           context: .
           file: Docker_Project/Dockerfile
           push: true
           tags: |
-            ${{ env.IMAGE }}:latest
+            saqlain67i/my_first_image:latest
