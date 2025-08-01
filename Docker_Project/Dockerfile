@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 
 COPY . .
 
-
+COPY Docker_Project/requirements.txt .
 ENV PYTHONPATH=/app/my_source/
 
 RUN pip install --upgrade pip
