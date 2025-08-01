@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 
 env:
-  IMAGE: saqlain67i/my_first_image # ← replace with your Docker Hub repo
+  IMAGE: saqlain67i/my_first_image 
 
 jobs:
   build-and-push:
