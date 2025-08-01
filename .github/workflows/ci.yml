@@ -25,7 +25,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: Docker_Project/Dockerfile
+          file: Docker_Project/Dockerfile #My Docker File Path
           push: true
           tags: |
             saqlain67i/my_first_image:latest
