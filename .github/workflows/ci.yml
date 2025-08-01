@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 
 env:
-  IMAGE: saqlain67i/my_first_image
+  IMAGE: saqlain67i/my_first_image   #Docker Hub Repo Name
 
 jobs:
   build-and-push:
