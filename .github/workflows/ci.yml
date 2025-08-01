@@ -4,6 +4,9 @@ on:
   push:
     branches: ["main"]
 
+env:
+  IMAGE: saqlain67i/your-repo-name  # ← replace with your Docker Hub repo
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -20,12 +23,20 @@ jobs:
       - name: Set up Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Build and push
+      - name: Compute tag
+        id: tag
+        run: |
+          SHORT=$(echo "${GITHUB_SHA}" | cut -c1-7)
+          echo "short=${SHORT}" >> "$GITHUB_OUTPUT"
+          echo "full_tag=${IMAGE}:${SHORT}" >> "$GITHUB_OUTPUT"
+          echo "latest_tag=${IMAGE}:latest" >> "$GITHUB_OUTPUT"
+
+      - name: Build and push image
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: Dockerfile  # adjust if path differs
+          file: Dockerfile  # adjust if your Dockerfile is elsewhere
           push: true
           tags: |
-            ${{ env.IMAGE }}:${{ github.sha  | cut(0,7) }}
-            ${{ env.IMAGE }}:latest
+            ${{ steps.tag.outputs.full_tag }}
+            ${{ steps.tag.outputs.latest_tag }}
